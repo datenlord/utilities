@@ -1,3 +1,5 @@
+//! A trait for overflowing arithmetic
+
 use crate::conversion::Cast;
 use std::any::type_name;
 
