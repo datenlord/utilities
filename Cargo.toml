@@ -1,0 +1,11 @@
+[package]
+name = "utilities"
+version = "0.1.0"
+authors = ["Qi Tian <mrwwheat@gmail.com>"]
+edition = "2018"
+description = "Utilities funtions for datenlord"
+repository = "https://github.com/datenlord/utilities"
+readme = "README.md"
+license = "MIT"
+keywords = ["utilities"]
+categories = ["utilities"]
