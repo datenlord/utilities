@@ -36,5 +36,8 @@
 )]
 
 //! Traits for datenlord.
-pub mod arithmetic;
-pub mod conversion;
+mod arithmetic;
+mod conversion;
+
+pub use arithmetic::OverflowArithmetic;
+pub use conversion::Cast;
