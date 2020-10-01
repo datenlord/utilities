@@ -12,7 +12,7 @@ macro_rules! impl_overflow_arithmetic {
                 let (res, overflow) = self.overflowing_add(other);
                 debug_assert!(
                     !overflow,
-                    "number = {}({}) add number = {}({}) overflowing",
+                    "number = {}({}) add number = {}({}) overflowed",
                     self,
                     type_name::<Self>(),
                     other,
@@ -26,7 +26,7 @@ macro_rules! impl_overflow_arithmetic {
                 let (res, overflow) = self.overflowing_sub(other);
                 debug_assert!(
                     !overflow,
-                    "number = {}({}) substract number = {}({}) overflowing",
+                    "number = {}({}) substract number = {}({}) overflowed",
                     self,
                     type_name::<Self>(),
                     other,
@@ -40,7 +40,7 @@ macro_rules! impl_overflow_arithmetic {
                 let (res, overflow) = self.overflowing_mul(other);
                 debug_assert!(
                     !overflow,
-                    "number = {}({}) multiply number = {}({}) overflowing",
+                    "number = {}({}) multiply number = {}({}) overflowed",
                     self,
                     type_name::<Self>(),
                     other,
@@ -54,7 +54,21 @@ macro_rules! impl_overflow_arithmetic {
                 let (res, overflow) = self.overflowing_div(other);
                 debug_assert!(
                     !overflow,
-                    "number = {}({}) divide number = {}({}) overflowing",
+                    "number = {}({}) divide number = {}({}) overflowed",
+                    self,
+                    type_name::<Self>(),
+                    other,
+                    type_name::<Self>()
+                );
+                res
+            }
+
+            #[inline]
+            fn overflow_shl(self, other: Self) -> Self {
+                let (res, overflow) = self.overflowing_shl(other.cast());
+                debug_assert!(
+                    !overflow,
+                    "number = {}({}) left shift number = {}({}) overflowed",
                     self,
                     type_name::<Self>(),
                     other,
@@ -68,7 +82,33 @@ macro_rules! impl_overflow_arithmetic {
                 let (res, overflow) = self.overflowing_shr(other.cast());
                 debug_assert!(
                     !overflow,
-                    "number = {}({}) right shift number = {}({}) overflowing",
+                    "number = {}({}) right shift number = {}({}) overflowed",
+                    self,
+                    type_name::<Self>(),
+                    other,
+                    type_name::<Self>()
+                );
+                res
+            }
+
+            #[inline]
+            fn overflow_neg(self) -> Self {
+                let (res, overflow) = self.overflowing_neg();
+                debug_assert!(
+                    !overflow,
+                    "number = {}({}) negate overflowed",
+                    self,
+                    type_name::<Self>(),
+                );
+                res
+            }
+
+            #[inline]
+            fn overflow_rem(self, other: Self) -> Self {
+                let (res, overflow) = self.overflowing_rem(other.cast());
+                debug_assert!(
+                    !overflow,
+                    "number = {}({}) remainder number = {}({}) overflowed",
                     self,
                     type_name::<Self>(),
                     other,
@@ -107,6 +147,15 @@ pub trait OverflowArithmetic {
     /// Overflow div.
     fn overflow_div(self, other: Self) -> Self;
 
+    /// Overflow shl.
+    fn overflow_shl(self, other: Self) -> Self;
+
     /// Overflow shr.
     fn overflow_shr(self, other: Self) -> Self;
+
+    /// Overflow neg.
+    fn overflow_neg(self) -> Self;
+
+    /// Overflow rem.
+    fn overflow_rem(self, other: Self) -> Self;
 }
