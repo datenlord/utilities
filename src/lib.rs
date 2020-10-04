@@ -3,7 +3,7 @@
     // https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html
     anonymous_parameters,
     bare_trait_objects,
-    // box_pointers,
+    box_pointers,
     elided_lifetimes_in_paths,
     missing_copy_implementations,
     missing_debug_implementations,
@@ -17,7 +17,7 @@
     unused_extern_crates,
     unused_import_braces,
     unused_qualifications,
-    // unused_results,
+    unused_results,
     variant_size_differences,
 
     // Treat warnings as errors
@@ -32,7 +32,6 @@
 #![allow(
     clippy::module_name_repetitions, // repeation of module name in a struct name is not big deal
     clippy::implicit_return, // This is rust style
-    clippy::panic,
 )]
 
 //! Traits for datenlord.
