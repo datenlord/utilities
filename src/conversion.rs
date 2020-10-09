@@ -38,3 +38,17 @@ pub fn cast_to_mut_ptr<T: ?Sized, U>(val: &mut T) -> *mut U {
     let ptr: *mut _ = val;
     ptr.cast()
 }
+
+/// Cast a pointer to usize
+#[allow(clippy::as_conversions)]
+#[inline]
+pub fn ptr_to_usize<T: ?Sized>(ptr: *const T) -> usize {
+    ptr as *const u8 as usize
+}
+
+/// Cast a mut pointer to usize
+#[allow(clippy::as_conversions)]
+#[inline]
+pub fn mut_ptr_to_usize<T: ?Sized>(ptr: *mut T) -> usize {
+    ptr as *mut u8 as usize
+}

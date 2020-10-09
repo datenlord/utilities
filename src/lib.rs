@@ -30,8 +30,10 @@
     clippy::cargo,
 )]
 #![allow(
+    clippy::blanket_clippy_restriction_lints, // allow denying all clippy::restriction lints
     clippy::module_name_repetitions, // repeation of module name in a struct name is not big deal
     clippy::implicit_return, // This is rust style
+    clippy::panic, // allow assert
 )]
 
 //! Traits for datenlord.
@@ -39,4 +41,4 @@ mod arithmetic;
 mod conversion;
 
 pub use crate::arithmetic::OverflowArithmetic;
-pub use crate::conversion::{cast_to_mut_ptr, cast_to_ptr, Cast};
+pub use crate::conversion::{cast_to_mut_ptr, cast_to_ptr, mut_ptr_to_usize, ptr_to_usize, Cast};
