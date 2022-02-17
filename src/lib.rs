@@ -41,4 +41,4 @@ mod arithmetic;
 mod conversion;
 
 pub use crate::arithmetic::OverflowArithmetic;
-pub use crate::conversion::{cast_to_mut_ptr, cast_to_ptr, mut_ptr_to_usize, ptr_to_usize, Cast};
+pub use crate::conversion::{cast_to_mut_ptr, cast_to_ptr, Cast};
