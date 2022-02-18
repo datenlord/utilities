@@ -3,6 +3,7 @@
 use crate::conversion::Cast;
 use std::any::type_name;
 
+/// Macros for checking arithmetic overflow, panicing when overflow happens.
 macro_rules! impl_overflow_arithmetic {
     ($target: ty) => {
         #[allow(clippy::use_self)]
