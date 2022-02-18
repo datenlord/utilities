@@ -1,9 +1,9 @@
 [package]
-name = "utilities"
+name = "clippy-utilities"
 version = "0.1.0"
-authors = ["Qi Tian <mrwwheat@gmail.com>"]
+authors = ["DatenLord Developers <dev@datenlord.io>"]
 edition = "2018"
-description = "Utilities funtions for datenlord"
+description = "Utilities funtions for clippy fixing" 
 repository = "https://github.com/datenlord/utilities"
 readme = "README.md"
 license = "MIT"
