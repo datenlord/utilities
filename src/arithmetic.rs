@@ -1,6 +1,6 @@
 //! A trait for overflowing arithmetic
 
-use crate::conversion::Cast;
+use crate::conversion::NumericCast;
 use std::any::type_name;
 
 /// Macros for checking arithmetic overflow, panicing when overflow happens.
@@ -66,7 +66,7 @@ macro_rules! impl_overflow_arithmetic {
 
             #[inline]
             fn overflow_shl(self, other: Self) -> Self {
-                let (res, overflow) = self.overflowing_shl(other.cast());
+                let (res, overflow) = self.overflowing_shl(other.numeric_cast());
                 assert!(
                     !overflow,
                     "number = {}({}) left shift number = {}({}) overflowed",
@@ -80,7 +80,7 @@ macro_rules! impl_overflow_arithmetic {
 
             #[inline]
             fn overflow_shr(self, other: Self) -> Self {
-                let (res, overflow) = self.overflowing_shr(other.cast());
+                let (res, overflow) = self.overflowing_shr(other.numeric_cast());
                 assert!(
                     !overflow,
                     "number = {}({}) right shift number = {}({}) overflowed",
@@ -106,7 +106,7 @@ macro_rules! impl_overflow_arithmetic {
 
             #[inline]
             fn overflow_rem(self, other: Self) -> Self {
-                let (res, overflow) = self.overflowing_rem(other.cast());
+                let (res, overflow) = self.overflowing_rem(other.numeric_cast());
                 assert!(
                     !overflow,
                     "number = {}({}) remainder number = {}({}) overflowed",
@@ -137,26 +137,34 @@ impl_overflow_arithmetic!(isize);
 /// A type cast trait used to do the integer arithmetic.
 pub trait OverflowArithmetic {
     /// Overflow add.
+    #[must_use]
     fn overflow_add(self, other: Self) -> Self;
 
     /// Overflow sub.
+    #[must_use]
     fn overflow_sub(self, other: Self) -> Self;
 
     /// Overflow mul.
+    #[must_use]
     fn overflow_mul(self, other: Self) -> Self;
 
     /// Overflow div.
+    #[must_use]
     fn overflow_div(self, other: Self) -> Self;
 
     /// Overflow shl.
+    #[must_use]
     fn overflow_shl(self, other: Self) -> Self;
 
     /// Overflow shr.
+    #[must_use]
     fn overflow_shr(self, other: Self) -> Self;
 
     /// Overflow neg.
+    #[must_use]
     fn overflow_neg(self) -> Self;
 
     /// Overflow rem.
+    #[must_use]
     fn overflow_rem(self, other: Self) -> Self;
 }

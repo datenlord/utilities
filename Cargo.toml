@@ -9,3 +9,6 @@ readme = "README.md"
 license = "MIT"
 keywords = ["utilities"]
 categories = ["utilities"]
+
+[dependencies]
+numeric_cast = "0.1.2"

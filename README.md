@@ -4,7 +4,7 @@ This utility lib helps for type casting and integer operation overflow checking.
 
 ```rust
 let a: u64 = 10;
-let b: i64 = a.cast();
+let b: i64 = a.numeric_cast();
 ```
 
 ```rust
