@@ -11,4 +11,4 @@ keywords = ["utilities"]
 categories = ["utilities"]
 
 [dependencies]
-numeric_cast = "0.1.2"
+numeric_cast = "0.2.0"
